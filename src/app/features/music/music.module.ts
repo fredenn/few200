@@ -10,7 +10,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './effects/app.effects';
 import { SongsDataService } from './services/songs-data.service';
 import { SongEffects } from './effects/song.effects';
-
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 const routes: Routes = [
   {
     path: 'music',
@@ -38,7 +39,9 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature(featureName, reducers),
-    EffectsModule.forFeature([AppEffects, SongEffects])
+    EffectsModule.forFeature([AppEffects, SongEffects]),
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [SongsDataService]
   // exports: [ListComponent]
